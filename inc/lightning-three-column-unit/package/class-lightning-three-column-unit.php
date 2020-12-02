@@ -25,10 +25,10 @@ class Lightning_Three_Column_Unit {
 	 */
 	public static function columns_setting_choice( $choice ) {
 		$choice = array(
-			'default'                  => __( 'Use common settings', 'lightning-pro' ),
-			'col-one-no-subsection'    => __( '1 column ( No sub section )', 'lightning-pro' ),
-			'col-one'                  => __( '1 column', 'lightning-pro' ),
-			'col-two'                  => __( '2 column', 'lightning-pro' ),
+			'default'                  => __( 'Use common settings', 'lightning-three-column-unit' ),
+			'col-one-no-subsection'    => __( '1 column ( No sub section )', 'lightning-three-column-unit' ),
+			'col-one'                  => __( '1 column', 'lightning-three-column-unit' ),
+			'col-two'                  => __( '2 column', 'lightning-three-column-unit' ),
 			'col-three-content-left'   => __( '3 Column Content Left', 'lightning-customize-unit' ),
 			'col-three-content-center' => __( '3 Column Content Center', 'lightning-customize-unit' ),
 			'col-three-content-right'  => __( '3 Column Content Right', 'lightning-customize-unit' ),
