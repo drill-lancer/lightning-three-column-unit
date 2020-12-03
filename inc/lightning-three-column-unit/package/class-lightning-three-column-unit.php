@@ -461,12 +461,12 @@ class Lightning_Three_Column_Unit {
 								width: ' . $main_width . 'px;
 								max-width: ' . $main_width . 'px;
 								margin-right: ' . $column_margin . 'px;
-								order: 0;
+								order: 1;
 							}
 							.sideSection {
 								width: ' . $side_width . 'px;
 								max-width: ' . $side_width . 'px;
-								order: 1;
+								order: 0;
 							}
 							.addSection {
 								width: 100%;
@@ -486,12 +486,12 @@ class Lightning_Three_Column_Unit {
 								width: ' . $main_width . 'px;
 								max-width: ' . $main_width . 'px;
 								margin-right: ' . $column_margin . 'px;
-								order: 0;
+								order: 1;
 							}
 							.sideSection {
 								width: ' . $side_width . 'px;
 								max-width: ' . $side_width . 'px;
-								order: 1;
+								order: 0;
 							}
 							.addSection {
 								display: none;
