@@ -156,14 +156,14 @@ class Lightning_Three_Column_Unit {
 			}
 			@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
 				.container {
-					width: ' . $container_2col_width . 'px;
-					max-width: ' . $container_2col_width . 'px;
+					width: calc( ' . $container_2col_width . 'px - ' . $outer_container_margin . 'px );
+					max-width: calc( ' . $container_2col_width . 'px - ' . $outer_container_margin . 'px );
 				}
 			}
 			@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
 				.container {
-					width: ' . $container_3col_width . 'px;
-					max-width: ' . $container_3col_width . 'px;
+					width: calc( ' . $container_3col_width . 'px - ' . $outer_container_margin . 'px );
+					max-width: calc( ' . $container_3col_width . 'px - ' . $outer_container_margin . 'px );
 				}
 			}
 			.mainSection,
