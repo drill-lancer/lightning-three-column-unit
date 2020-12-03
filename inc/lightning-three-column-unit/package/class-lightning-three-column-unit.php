@@ -122,6 +122,13 @@ class Lightning_Three_Column_Unit {
 		$column_margin          = $options['column_margin'];
 		$outer_container_margin = $options['outer_container_margin'];
 
+		$container_2col_width = $main_width + $side_width + $column_margin;
+		$container_3col_width = $container_2col_width + $side_width + $column_margin;
+		$max_1col_width       = $container_2col_width + $outer_container_margin - 1;
+		$min_2col_width       = $container_2col_width + $outer_container_margin;
+		$max_2col_width       = $container_3col_width + $outer_container_margin - 1;
+		$min_3col_width       = $container_3col_width + $outer_container_margin;
+
 		$dynamic_css = '
 		.siteContent>.container>.row {
 			display: flex;
@@ -141,6 +148,24 @@ class Lightning_Three_Column_Unit {
 		if ( lightning_is_layout_onecolumn() ) {
 			// 1 Column Layout.
 			$dynamic_css .= '
+			@media ( max-width: ' . $max_1col_width . 'px ) {
+				.container {
+					width: calc( 100% - ' . $outer_container_margin . 'px );
+					max-width: calc( 100% - ' . $outer_container_margin . 'px );
+				}
+			}
+			@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
+				.container {
+					width: ' . $container_2col_width . 'px;
+					max-width: ' . $container_2col_width . 'px;
+				}
+			}
+			@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
+				.container {
+					width: ' . $container_3col_width . 'px;
+					max-width: ' . $container_3col_width . 'px;
+				}
+			}
 			.mainSection,
 			.sideSection {
 				width: 100%;
@@ -149,14 +174,17 @@ class Lightning_Three_Column_Unit {
 			';
 		} elseif ( Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column() ) {
 			// 2 Column Layout.
-			$container_width = $main_width + $side_width + $column_margin;
-			$max_width       = $container_width + $outer_container_margin - 1;
-			$min_width       = $container_width + $outer_container_margin;
+			$main_width_wide = $main_width * ( $container_3col_width - $column_margin ) / ( $container_2col_width - $column_margin );
+			$side_width_wide = $side_width * ( $container_3col_width - $column_margin ) / ( $container_2col_width - $column_margin );
 
 			// 1 Column.
 			if ( 'wrap-down' === $options['main_sidebar_control'] ) {
 				$dynamic_css .= '
-				@media ( max-width: ' . $max_width . 'px ) {
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.container {
+						width: calc( 100% - ' . $outer_container_margin . 'px );
+						max-width: calc( 100% - ' . $outer_container_margin . 'px );
+					}
 					.mainSection,
 					.sideSection {
 						width: 100%;
@@ -166,7 +194,11 @@ class Lightning_Three_Column_Unit {
 				';
 			} else {
 				$dynamic_css .= '
-				@media ( max-width: ' . $max_width . 'px ) {
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.container {
+						width: calc( 100% - ' . $outer_container_margin . 'px );
+						max-width: calc( 100% - ' . $outer_container_margin . 'px );
+					}
 					.mainSection,
 					.sideSection {
 						width: 100%;
@@ -182,10 +214,10 @@ class Lightning_Three_Column_Unit {
 			// 2 Column.
 			if ( 'left' === $sidebar_position ) {
 				$dynamic_css .= '
-				@media ( min-width: ' . $min_width . 'px ) and ( max-width: 9999px ) {
+				@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
 					.container {
-						width: ' . $container_width . 'px;
-						max-width: ' . $container_width . 'px;
+						width: ' . $container_2col_width . 'px;
+						max-width: ' . $container_2col_width . 'px;
 					}
 					.mainSection {
 						width: ' . $main_width . 'px;
@@ -199,13 +231,30 @@ class Lightning_Three_Column_Unit {
 						order: 0;
 					}
 				}
+				@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
+					.container {
+						width: ' . $container_3col_width . 'px;
+						max-width: ' . $container_3col_width . 'px;
+					}
+					.mainSection {
+						width: ' . $main_width_wide . 'px;
+						max-width: ' . $main_width_wide . 'px;
+						margin-left: ' . $column_margin_wide . 'px;
+						order: 1;
+					}
+					.sideSection {
+						width: ' . $side_width_wide . 'px;
+						max-width: ' . $side_width_wide . 'px;
+						order: 0;
+					}
+				}
 				';
 			} else {
 				$dynamic_css .= '
-				@media ( min-width: ' . $min_width . 'px ) and ( max-width: 9999px ) {
+				@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
 					.container {
-						width: ' . $container_width . 'px;
-						max-width: ' . $container_width . 'px;
+						width: ' . $container_2col_width . 'px;
+						max-width: ' . $container_2col_width . 'px;
 					}
 					.mainSection {
 						width: ' . $main_width . 'px;
@@ -219,24 +268,37 @@ class Lightning_Three_Column_Unit {
 						order: 1;
 					}
 				}
+				@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
+					.container {
+						width: ' . $container_3col_width . 'px;
+						max-width: ' . $container_3col_width . 'px;
+					}
+					.mainSection {
+						width: ' . $main_width_wide . 'px;
+						max-width: ' . $main_width_wide . 'px;
+						margin-right: ' . $column_margin_wide . 'px;
+						order: 0;
+					}
+					.sideSection {
+						width: ' . $side_width_wide . 'px;
+						max-width: ' . $side_width_wide . 'px;
+						order: 1;
+					}
+				}
 				';
 			}
 		} elseif ( Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column() ) {
 			// 3 column Layout.
-			$container_2col_width = $main_width + $side_width + $column_margin;
-			$max_1col_width       = $container_2col_width + $outer_container_margin - 1;
-			$min_2col_width       = $container_2col_width + $outer_container_margin;
-
-			$container_3col_width = $container_2col_width + $side_width + $column_margin;
-			$max_2col_width       = $container_3col_width + $outer_container_margin - 1;
-			$min_3col_width       = $container_3col_width + $outer_container_margin;
-
 			$max_width = 'enable' === $options['three-to-one-via-two'] ? $max_1col_width : $min_2col_width;
 
 			// 1 Column.
 			if ( 'wrap-down' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
-				@media ( max-width: ' . $max_width  . 'px ) {
+				@media ( max-width: ' . $max_width . 'px ) {
+					.container {
+						width: calc( 100% - ' . $outer_container_margin . 'px );
+						max-width: calc( 100% - ' . $outer_container_margin . 'px );
+					}
 					.mainSection,
 					.sideSection,
 					.addSection {
@@ -247,7 +309,11 @@ class Lightning_Three_Column_Unit {
 				';
 			} elseif ( 'wrap-down' === $options['main_sidebar_control'] && 'hidden' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
-				@media ( max-width: ' . $max_width  . 'px ) {
+				@media ( max-width: ' . $max_width . 'px ) {
+					.container {
+						width: calc( 100% - ' . $outer_container_margin . 'px );
+						max-width: calc( 100% - ' . $outer_container_margin . 'px );
+					}
 					.mainSection,
 					.sideSection,
 					.addSection {
@@ -262,6 +328,10 @@ class Lightning_Three_Column_Unit {
 			} elseif ( 'hidden' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
+					.container {
+						width: calc( 100% - ' . $outer_container_margin . 'px );
+						max-width: calc( 100% - ' . $outer_container_margin . 'px );
+					}
 					.mainSection,
 					.sideSection,
 					.addSection {
@@ -276,6 +346,10 @@ class Lightning_Three_Column_Unit {
 			} else {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
+					.container {
+						width: calc( 100% - ' . $outer_container_margin . 'px );
+						max-width: calc( 100% - ' . $outer_container_margin . 'px );
+					}
 					.mainSection,
 					.sideSection,
 					.addSection {
@@ -501,6 +575,8 @@ class Lightning_Three_Column_Unit {
 					}
 				}
 			}
+
+			// 3 Column.
 		}
 		$dynamic_css = str_replace( PHP_EOL, '', $dynamic_css );
 		// delete tab.
