@@ -22,10 +22,10 @@ class Lightning_Three_Column_Unit_Admin {
 	 */
 	public static function default_option() {
 		$args = array(
-			'main_width'             => '66.66667%',
-			'side_width'             => 'calc( 33.33333% - 3rem )',
-			'column_margin'          => '3rem',
-			'outer_container_margin' => '40px',
+			'main_width'             => '680',
+			'side_width'             => '320',
+			'column_margin'          => '20',
+			'outer_container_margin' => '40',
 			'three-to-one-via-two'   => 'disable',
 			'main_sidebar_control'   => 'wrap-down',
 			'sub_sidebar_control'    => 'hidden',
@@ -68,7 +68,7 @@ class Lightning_Three_Column_Unit_Admin {
 				'section'     => 'lightning_three_column_unit_setting',
 				'settings'    => 'lightning_three_column_unit_options[main_width]',
 				'type'        => 'text',
-				'description' => __( 'Input with unit ( px, em, rem and so on ). You can use calc.', 'lightning-three-column-unit' ),
+				'input_after' => __( 'px', 'lightning-three-column-unit' ),
 			)
 		);
 
@@ -89,7 +89,7 @@ class Lightning_Three_Column_Unit_Admin {
 				'section'     => 'lightning_three_column_unit_setting',
 				'settings'    => 'lightning_three_column_unit_options[side_width]',
 				'type'        => 'text',
-				'description' => __( 'Input with unit ( px, em, rem and so on ). You can use calc.', 'lightning-three-column-unit' ),
+				'input_after' => __( 'px', 'lightning-three-column-unit' ),
 			)
 		);
 
@@ -110,7 +110,7 @@ class Lightning_Three_Column_Unit_Admin {
 				'section'     => 'lightning_three_column_unit_setting',
 				'settings'    => 'lightning_three_column_unit_options[column_margin]',
 				'type'        => 'text',
-				'description' => __( 'Input with unit ( px, em, rem and so on ). You can use calc.', 'lightning-three-column-unit' ),
+				'input_after' => __( 'px', 'lightning-three-column-unit' ),
 			)
 		);
 
@@ -131,7 +131,7 @@ class Lightning_Three_Column_Unit_Admin {
 				'section'     => 'lightning_three_column_unit_setting',
 				'settings'    => 'lightning_three_column_unit_options[outer_container_margin]',
 				'type'        => 'text',
-				'description' => __( 'Input with unit ( px, em, rem and so on ). You can use calc.', 'lightning-three-column-unit' ),
+				'input_after' => __( 'px', 'lightning-three-column-unit' ),
 			)
 		);
 
