@@ -239,7 +239,7 @@ class Lightning_Three_Column_Unit {
 					.mainSection {
 						width: ' . $main_width_wide . 'px;
 						max-width: ' . $main_width_wide . 'px;
-						margin-left: ' . $column_margin_wide . 'px;
+						margin-left: ' . $column_margin . 'px;
 						order: 1;
 					}
 					.sideSection {
@@ -276,7 +276,7 @@ class Lightning_Three_Column_Unit {
 					.mainSection {
 						width: ' . $main_width_wide . 'px;
 						max-width: ' . $main_width_wide . 'px;
-						margin-right: ' . $column_margin_wide . 'px;
+						margin-right: ' . $column_margin . 'px;
 						order: 0;
 					}
 					.sideSection {
