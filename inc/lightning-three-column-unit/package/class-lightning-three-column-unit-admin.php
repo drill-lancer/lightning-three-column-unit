@@ -64,11 +64,10 @@ class Lightning_Three_Column_Unit_Admin {
 		$wp_customize->add_control(
 			'lightning_three_column_unit_options[main_width]',
 			array(
-				'label'       => __( 'Main Column Width Value', 'lightning-three-column-unit' ),
-				'section'     => 'lightning_three_column_unit_setting',
-				'settings'    => 'lightning_three_column_unit_options[main_width]',
-				'type'        => 'text',
-				'input_after' => __( 'px', 'lightning-three-column-unit' ),
+				'label'    => __( 'Main Column Width Value ( px )', 'lightning-three-column-unit' ),
+				'section'  => 'lightning_three_column_unit_setting',
+				'settings' => 'lightning_three_column_unit_options[main_width]',
+				'type'     => 'text',
 			)
 		);
 
@@ -85,11 +84,10 @@ class Lightning_Three_Column_Unit_Admin {
 		$wp_customize->add_control(
 			'lightning_three_column_unit_options[side_width]',
 			array(
-				'label'       => __( 'Side Column Width Value', 'lightning-three-column-unit' ),
-				'section'     => 'lightning_three_column_unit_setting',
-				'settings'    => 'lightning_three_column_unit_options[side_width]',
-				'type'        => 'text',
-				'input_after' => __( 'px', 'lightning-three-column-unit' ),
+				'label'    => __( 'Side Column Width ( px )', 'lightning-three-column-unit' ),
+				'section'  => 'lightning_three_column_unit_setting',
+				'settings' => 'lightning_three_column_unit_options[side_width]',
+				'type'     => 'text',
 			)
 		);
 
@@ -106,11 +104,10 @@ class Lightning_Three_Column_Unit_Admin {
 		$wp_customize->add_control(
 			'lightning_three_column_unit_options[column_margin]',
 			array(
-				'label'       => __( 'Margin of Between Columns', 'lightning-three-column-unit' ),
-				'section'     => 'lightning_three_column_unit_setting',
-				'settings'    => 'lightning_three_column_unit_options[column_margin]',
-				'type'        => 'text',
-				'input_after' => __( 'px', 'lightning-three-column-unit' ),
+				'label'    => __( 'Margin of Between Columns ( px )', 'lightning-three-column-unit' ),
+				'section'  => 'lightning_three_column_unit_setting',
+				'settings' => 'lightning_three_column_unit_options[column_margin]',
+				'type'     => 'text',
 			)
 		);
 
@@ -127,11 +124,10 @@ class Lightning_Three_Column_Unit_Admin {
 		$wp_customize->add_control(
 			'lightning_three_column_unit_options[outer_container_margin]',
 			array(
-				'label'       => __( 'Minumum Margin Sum for Out of Container', 'lightning-three-column-unit' ),
-				'section'     => 'lightning_three_column_unit_setting',
-				'settings'    => 'lightning_three_column_unit_options[outer_container_margin]',
-				'type'        => 'text',
-				'input_after' => __( 'px', 'lightning-three-column-unit' ),
+				'label'    => __( 'Minumum Margin Sum for Out of Container ( px )', 'lightning-three-column-unit' ),
+				'section'  => 'lightning_three_column_unit_setting',
+				'settings' => 'lightning_three_column_unit_options[outer_container_margin]',
+				'type'     => 'text',
 			)
 		);
 
