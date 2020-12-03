@@ -5,6 +5,10 @@
  * @package Lightning Customize Unit
  */
 
+if ( ! class_exists( 'Lightning_Three_Column_Unit_Admin' ) ) {
+	require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-admin.php';
+}
+
 if ( ! class_exists( 'Lightning_Three_Column_Unit_Condition' ) ) {
 	require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-condition.php';
 }
@@ -16,4 +20,3 @@ if ( ! class_exists( 'Lightning_Three_Column_Unit' ) ) {
 if ( ! class_exists( 'Lightning_Three_Column_Unit_Widget_Area' ) ) {
 	require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-widget-area.php';
 }
-
