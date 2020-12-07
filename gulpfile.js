@@ -16,5 +16,5 @@ gulp.task("dist", function() {
 				base: "./"
 			}
 		)
-		.pipe(gulp.dest("dist/vk-showcase"));
+		.pipe(gulp.dest("dist/lightning-three-column-unit"));
 });
