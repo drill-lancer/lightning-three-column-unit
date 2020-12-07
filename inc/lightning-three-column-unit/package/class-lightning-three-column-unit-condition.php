@@ -65,7 +65,7 @@ class Lightning_Three_Column_Unit_Condition {
 		/**
 		 * アーカイブページの場合
 		 */
-		if ( is_archive() && ! is_search() ) {
+		if ( is_archive() && ! is_search() && ! is_author() ) {
 			$current_post_type_info = lightning_get_post_type();
 			$archive_post_types     = array( 'post' ) + $additional_post_types;
 			foreach ( $archive_post_types as $archive_post_type ) {
@@ -151,7 +151,7 @@ class Lightning_Three_Column_Unit_Condition {
 		/**
 		 * アーカイブページの場合
 		 */
-		if ( is_archive() && ! is_search() ) {
+		if ( is_archive() && ! is_search() && ! is_author() ) {
 			$current_post_type_info = lightning_get_post_type();
 			$archive_post_types     = array( 'post' ) + $additional_post_types;
 			foreach ( $archive_post_types as $archive_post_type ) {
@@ -179,7 +179,7 @@ class Lightning_Three_Column_Unit_Condition {
 				}
 			}
 		}
-		return apply_filters( 'lightning_is_layout_two_column', $three_column_left );
+		return apply_filters( 'lightning_is_layout_three_column_content_left', $three_column_left );
 	}
 
 	/**
@@ -237,7 +237,7 @@ class Lightning_Three_Column_Unit_Condition {
 		/**
 		 * アーカイブページの場合
 		 */
-		if ( is_archive() && ! is_search() ) {
+		if ( is_archive() && ! is_search() && ! is_author() ) {
 			$current_post_type_info = lightning_get_post_type();
 			$archive_post_types     = array( 'post' ) + $additional_post_types;
 			foreach ( $archive_post_types as $archive_post_type ) {
@@ -265,7 +265,7 @@ class Lightning_Three_Column_Unit_Condition {
 				}
 			}
 		}
-		return apply_filters( 'lightning_is_layout_two_column', $three_column_center );
+		return apply_filters( 'lightning_is_layout_three_column_content_center', $three_column_center );
 	}
 
 	/**
@@ -323,7 +323,7 @@ class Lightning_Three_Column_Unit_Condition {
 		/**
 		 * アーカイブページの場合
 		 */
-		if ( is_archive() && ! is_search() ) {
+		if ( is_archive() && ! is_search() && ! is_author() ) {
 			$current_post_type_info = lightning_get_post_type();
 			$archive_post_types     = array( 'post' ) + $additional_post_types;
 			foreach ( $archive_post_types as $archive_post_type ) {
@@ -351,7 +351,7 @@ class Lightning_Three_Column_Unit_Condition {
 				}
 			}
 		}
-		return apply_filters( 'lightning_is_layout_two_column', $three_column_right );
+		return apply_filters( 'lightning_is_layout_three_column_content_right', $three_column_right );
 	}
 
 	/**
@@ -362,6 +362,66 @@ class Lightning_Three_Column_Unit_Condition {
 		$three_column_content_center = self::lightning_is_layout_three_column_content_center();
 		$three_column_content_right  = self::lightning_is_layout_three_column_content_right();
 		return $three_column_content_left || $three_column_content_center || $three_column_content_right;
+	}
+
+	/**
+	 * Lightning is 3 Column
+	 */
+	public static function lightning_is_set_three_column() {
+		$three_column_set = false;
+
+		$options = get_option( 'lightning_theme_options' );
+		if ( in_array( 'col-three-content-left', $options['layout'], true ) ) {
+			$three_column_set = true;
+		}
+		if ( in_array( 'col-three-content-center', $options['layout'], true ) ) {
+			$three_column_set = true;
+		}
+		if ( in_array( 'col-three-content-right', $options['layout'], true ) ) {
+			$three_column_set = true;
+		}
+
+		$three_column_content_left_posts = get_posts(
+			array(
+				'post_type'      => 'any',
+				'posts_per_page' => -1,
+				'meta_key'       => '_lightning_design_setting[layout]',
+				'meta_value'     => 'col-three-content-left',
+			)
+		);
+
+		if ( ! empty( $three_column_content_left_posts ) ) {
+			$three_column_set = true;
+		}
+
+		$three_column_content_center_posts = get_posts(
+			array(
+				'post_type'      => 'any',
+				'posts_per_page' => -1,
+				'meta_key'       => '_lightning_design_setting[layout]',
+				'meta_value'     => 'col-three-content-center',
+			)
+		);
+
+		if ( ! empty( $three_column_content_center_posts ) ) {
+			$three_column_set = true;
+		}
+
+		$three_column_content_right_posts = get_posts(
+			array(
+				'post_type'      => 'any',
+				'posts_per_page' => -1,
+				'meta_key'       => '_lightning_design_setting[layout]',
+				'meta_value'     => 'col-three-content-right',
+			)
+		);
+
+		if ( ! empty( $three_column_content_right_posts ) ) {
+			$three_column_set = true;
+		}
+
+		return $three_column_set;
+
 	}
 }
 
