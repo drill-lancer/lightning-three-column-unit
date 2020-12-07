@@ -17,6 +17,9 @@ class Lightning_Three_Column_Unit {
 		add_filter( 'lighghtning_columns_setting_choice', array( __CLASS__, 'columns_setting_choice' ) );
 		add_filter( 'lightning_get_the_class_names', array( __CLASS__, 'get_the_class_names' ) );
 		add_action( 'wp_head', array( __CLASS__, 'render_style' ), 5 );
+		$options                = get_option( 'lightning_theme_options' );
+		$options['sidebar_fix'] = 'no-fix';
+		update_option( 'lightning_theme_options', $options );
 	}
 
 	/**

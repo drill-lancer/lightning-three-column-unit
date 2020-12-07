@@ -5,10 +5,6 @@
  * @package Lightning Customize Unit
  */
 
-$options                = get_option( 'lightning_theme_options' );
-$options['sidebar_fix'] = 'no-fix';
-update_option( 'lightning_theme_options', $options );
-
 if ( ! class_exists( 'Lightning_Three_Column_Unit_Admin' ) ) {
 	require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-admin.php';
 }
