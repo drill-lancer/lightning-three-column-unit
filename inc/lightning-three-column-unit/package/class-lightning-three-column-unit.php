@@ -30,9 +30,9 @@ class Lightning_Three_Column_Unit {
 			'col-one-no-subsection'    => __( '1 column ( No sub section )', 'lightning-three-column-unit' ),
 			'col-one'                  => __( '1 column', 'lightning-three-column-unit' ),
 			'col-two'                  => __( '2 column', 'lightning-three-column-unit' ),
-			'col-three-content-left'   => __( '3 Column Content Left', 'lightning-customize-unit' ),
-			'col-three-content-center' => __( '3 Column Content Center', 'lightning-customize-unit' ),
-			'col-three-content-right'  => __( '3 Column Content Right', 'lightning-customize-unit' ),
+			'col-three-content-left'   => __( '3 Column Content Left', 'lightning-three-column-unit' ),
+			'col-three-content-center' => __( '3 Column Content Center', 'lightning-three-column-unit' ),
+			'col-three-content-right'  => __( '3 Column Content Right', 'lightning-three-column-unit' ),
 		);
 		return $choice;
 	}

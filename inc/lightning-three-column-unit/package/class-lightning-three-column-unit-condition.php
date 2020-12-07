@@ -14,102 +14,11 @@ class Lightning_Three_Column_Unit_Condition {
 	 * Lightning is 2 Column
 	 */
 	public static function lightning_is_layout_two_column() {
-		$two_column = false;
-		$options    = get_option( 'lightning_theme_options' );
-		global $wp_query;
-
-		$array = lightning_layout_target_array();
-
-		foreach ( $array as $key => $value ) {
-			if ( call_user_func( $value['function'] ) ) {
-				if ( isset( $options['layout'][ $key ] ) ) {
-					if ( 'col-two' === $options['layout'][ $key ] ) {
-						$two_column = true;
-					} elseif ( 'default' === $options['layout'][ $key ] ) {
-						$two_column = true;
-					}
-				} else {
-					$two_column = true;
-				}
-			}
-		}
-
-		if ( is_front_page() && ! is_home() ) {
-			if ( isset( $options['layout']['front-page'] ) ) {
-				if ( 'col-two' === $options['layout']['front-page'] ) {
-					$two_column = true;
-				} elseif ( 'default' === $options['layout']['front-page'] ) {
-					$two_column = true;
-				}
-			} else {
-				$two_column = true;
-			}
-		} elseif ( is_front_page() && is_home() ) {
-			if ( isset( $options['layout']['front-page'] ) ) {
-				if ( 'col-two' === $options['layout']['front-page'] ) {
-					$two_column = true;
-				} elseif ( 'default' === $options['layout']['front-page'] ) {
-					$two_column = true;
-				} elseif ( isset( $options['layout']['archive-post'] ) ) {
-					if ( 'col-two' === $options['layout']['archive-post'] ) {
-						$two_column = true;
-					} elseif ( 'default' === $options['layout']['archive-post'] ) {
-						$two_column = true;
-					}
-				} else {
-					$two_column = true;
-				}
-			} else {
-				$two_column = true;
-			}
-		} elseif ( ! is_front_page() && is_home() ) {
-			if ( isset( $options['layout']['archive-post'] ) ) {
-				if ( 'col-two' === $options['layout']['archive-post'] ) {
-					$two_column = true;
-				}
-			}
-		}
-
-		$additional_post_types = get_post_types(
-			array(
-				'public'   => true,
-				'_builtin' => false,
-			),
-			'names'
-		);
-
-		/**
-		 * アーカイブページの場合
-		 */
-		if ( is_archive() && ! is_search() && ! is_author() ) {
-			$current_post_type_info = lightning_get_post_type();
-			$archive_post_types     = array( 'post' ) + $additional_post_types;
-			foreach ( $archive_post_types as $archive_post_type ) {
-				if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
-					if ( 'col-two' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
-						$two_column = true;
-					}
-				}
-			}
-		}
-
-		if ( is_singular() ) {
-			global $post;
-			$single_post_types = array( 'post', 'page' ) + $additional_post_types;
-			foreach ( $single_post_types as $single_post_type ) {
-				if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
-					if ( 'col-two' === $options['layout'][ 'single-' . $single_post_type ] ) {
-						$two_column = true;
-					}
-				}
-			}
-			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-				if ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
-					$two_column = true;
-				}
-			}
-		}
-		return apply_filters( 'lightning_is_layout_two_column', $two_column );
+		$one_column          = lightning_is_layout_onecolumn();
+		$three_column_left   = self::lightning_is_layout_three_column_content_left();
+		$three_column_center = self::lightning_is_layout_three_column_content_center();
+		$three_column_right  = self::lightning_is_layout_three_column_content_right();
+		return ! $one_column && ! $three_column_left && ! $three_column_center && ! $three_column_right;
 	}
 
 	/**
@@ -144,7 +53,7 @@ class Lightning_Three_Column_Unit_Condition {
 					$three_column_left = true;
 				} elseif ( isset( $options['layout']['archive-post'] ) ) {
 					if ( 'col-three-content-left' === $options['layout']['archive-post'] ) {
-						$two_column = true;
+						$three_column_left = true;
 					}
 				}
 			}
@@ -230,7 +139,7 @@ class Lightning_Three_Column_Unit_Condition {
 					$three_column_center = true;
 				} elseif ( isset( $options['layout']['archive-post'] ) ) {
 					if ( 'col-three-content-center' === $options['layout']['archive-post'] ) {
-						$two_column = true;
+						$three_column_center = true;
 					}
 				}
 			}
@@ -316,7 +225,7 @@ class Lightning_Three_Column_Unit_Condition {
 					$three_column_right = true;
 				} elseif ( isset( $options['layout']['archive-post'] ) ) {
 					if ( 'col-three-content-right' === $options['layout']['archive-post'] ) {
-						$two_column = true;
+						$three_column_right = true;
 					}
 				}
 			}
