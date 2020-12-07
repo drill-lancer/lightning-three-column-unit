@@ -26,6 +26,8 @@ class Lightning_Three_Column_Unit_Condition {
 					if ( 'col-two' === $options['layout'][ $key ] ) {
 						$two_column = true;
 					}
+				} else {
+					$two_column = true;
 				}
 			}
 		}
@@ -35,6 +37,8 @@ class Lightning_Three_Column_Unit_Condition {
 				if ( 'col-two' === $options['layout']['front-page'] ) {
 					$two_column = true;
 				}
+			} else {
+				$two_column = true;
 			}
 		} elseif ( is_front_page() && is_home() ) {
 			if ( isset( $options['layout']['front-page'] ) ) {
@@ -45,12 +49,16 @@ class Lightning_Three_Column_Unit_Condition {
 						$two_column = true;
 					}
 				}
+			} else {
+				$two_column = true;
 			}
 		} elseif ( ! is_front_page() && is_home() ) {
 			if ( isset( $options['layout']['archive-post'] ) ) {
 				if ( 'col-two' === $options['layout']['archive-post'] ) {
 					$two_column = true;
 				}
+			} else {
+				$two_column = true;
 			}
 		}
 
@@ -73,6 +81,8 @@ class Lightning_Three_Column_Unit_Condition {
 					if ( 'col-two' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
 						$two_column = true;
 					}
+				} else {
+					$two_column = true;
 				}
 			}
 		}
@@ -85,6 +95,8 @@ class Lightning_Three_Column_Unit_Condition {
 					if ( 'col-two' === $options['layout'][ 'single-' . $single_post_type ] ) {
 						$two_column = true;
 					}
+				} else {
+					$two_column = true;
 				}
 			}
 			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
@@ -371,22 +383,26 @@ class Lightning_Three_Column_Unit_Condition {
 		$three_column_set = false;
 
 		$options = get_option( 'lightning_theme_options' );
-		if ( in_array( 'col-three-content-left', $options['layout'], true ) ) {
-			$three_column_set = true;
-		}
-		if ( in_array( 'col-three-content-center', $options['layout'], true ) ) {
-			$three_column_set = true;
-		}
-		if ( in_array( 'col-three-content-right', $options['layout'], true ) ) {
-			$three_column_set = true;
+		if ( ! empty( $options['layout'] ) ) {
+			if ( in_array( 'col-three-content-left', $options['layout'], true ) ) {
+				$three_column_set = true;
+			}
+			if ( in_array( 'col-three-content-center', $options['layout'], true ) ) {
+				$three_column_set = true;
+			}
+			if ( in_array( 'col-three-content-right', $options['layout'], true ) ) {
+				$three_column_set = true;
+			}
 		}
 
 		$three_column_content_left_posts = get_posts(
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_key'       => '_lightning_design_setting[layout]',
-				'meta_value'     => 'col-three-content-left',
+				'meta_key'       => '_lightning_design_setting',
+				'meta_value'     => array(
+					'layout' => 'col-three-content-left',
+				),
 			)
 		);
 
@@ -398,8 +414,10 @@ class Lightning_Three_Column_Unit_Condition {
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_key'       => '_lightning_design_setting[layout]',
-				'meta_value'     => 'col-three-content-center',
+				'meta_key'       => '_lightning_design_setting',
+				'meta_value'     => array(
+					'layout' => 'col-three-content-center',
+				),
 			)
 		);
 
@@ -411,8 +429,10 @@ class Lightning_Three_Column_Unit_Condition {
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_key'       => '_lightning_design_setting[layout]',
-				'meta_value'     => 'col-three-content-right',
+				'meta_key'       => '_lightning_design_setting',
+				'meta_value'     => array(
+					'layout' => 'col-three-content-right',
+				),
 			)
 		);
 

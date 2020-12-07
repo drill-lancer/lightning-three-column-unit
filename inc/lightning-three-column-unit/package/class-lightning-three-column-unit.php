@@ -48,7 +48,17 @@ class Lightning_Three_Column_Unit {
 		$skin_info = Lightning_Design_Manager::get_current_skin();
 		$options   = get_option( 'lightning_theme_options' );
 
-		if ( lightning_is_layout_onecolumn() ) {
+		$one_column_layout   = lightning_is_layout_onecolumn();
+		$two_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column();
+		$three_column_layout = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column();
+
+		$three_column_content_left_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_left();
+		$three_column_content_center_layout = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_center();
+		$three_column_content_right_layout  = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_right();
+
+		$three_column_set = Lightning_Three_Column_Unit_Condition::lightning_is_set_three_column();
+
+		if ( $one_column_layout ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
 			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
 			if ( lightning_is_subsection_display() ) {
@@ -60,7 +70,7 @@ class Lightning_Three_Column_Unit {
 			}
 		}
 
-		if ( Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column() ) {
+		if ( $two_column_layout ) {
 			if ( ! empty( $options['sidebar_position'] ) && 'left' === $options['sidebar_position'] ) {
 				$class_names['mainSection'] = 'col mainSection mainSection-col-two baseSection';
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two baseSection';
@@ -70,7 +80,7 @@ class Lightning_Three_Column_Unit {
 			}
 		}
 
-		if ( Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_left() ) {
+		if ( $three_column_content_left_layout ) {
 			$class_names['mainSection'] = 'col mainSection  mainSection-col-three baseSection';
 			if ( ! empty( $options['sidebar_position'] ) && 'left' === $options['sidebar_position'] ) {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-three baseSection';
@@ -81,7 +91,7 @@ class Lightning_Three_Column_Unit {
 			}
 		}
 
-		if ( Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_center() ) {
+		if ( $three_column_content_center_layout ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-three baseSection';
 			if ( ! empty( $options['sidebar_position'] ) && 'left' === $options['sidebar_position'] ) {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-three baseSection';
@@ -91,7 +101,7 @@ class Lightning_Three_Column_Unit {
 			}
 		}
 
-		if ( Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_right() ) {
+		if ( $three_column_content_right_layout ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-three baseSection';
 			if ( ! empty( $options['sidebar_position'] ) && 'left' === $options['sidebar_position'] ) {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-three baseSection';
@@ -116,6 +126,8 @@ class Lightning_Three_Column_Unit {
 		$one_column_layout   = lightning_is_layout_onecolumn();
 		$two_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column();
 		$three_column_layout = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column();
+
+		var_dump( $two_column_layout );
 
 		$three_column_content_left_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_left();
 		$three_column_content_center_layout = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column_content_center();
