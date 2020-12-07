@@ -5,7 +5,7 @@
  * @package Lightning Customize Unit
  */
 
-$options   = get_option( 'lightning_theme_options' );
+$options                = get_option( 'lightning_theme_options' );
 $options['sidebar_fix'] = 'no-fix';
 update_option( 'lightning_theme_options', $options );
 
