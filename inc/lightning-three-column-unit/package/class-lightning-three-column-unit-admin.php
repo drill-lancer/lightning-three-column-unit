@@ -144,7 +144,7 @@ class Lightning_Three_Column_Unit_Admin {
 		$wp_customize->add_control(
 			'lightning_three_column_unit_options[three-to-one-via-two]',
 			array(
-				'label'    => __( 'When Three Column Layout is Choosed and Narrowing Window Size, Make Two Column Layout', 'lightning-three-column-unit' ),
+				'label'    => __( 'When Three Column Layout is Selected, Make Two Column Layout', 'lightning-three-column-unit' ),
 				'section'  => 'lightning_three_column_unit_setting',
 				'settings' => 'lightning_three_column_unit_options[three-to-one-via-two]',
 				'type'     => 'select',
