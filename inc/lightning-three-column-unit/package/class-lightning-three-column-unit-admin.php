@@ -14,7 +14,7 @@ class Lightning_Three_Column_Unit_Admin {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'customize_register', array( __CLASS__, 'resister_customize' ) );
+		add_action( 'customize_register', array( __CLASS__, 'resister_customize' ), 11 );
 	}
 
 	/**
@@ -50,6 +50,12 @@ class Lightning_Three_Column_Unit_Admin {
 				'priority' => 999,
 			)
 		);
+
+		// Main Culumn Width.
+		$wp_customize->remove_setting( 'ltg_sidebar_fix_setting_title' );
+		$wp_customize->remove_control( 'ltg_sidebar_fix_setting_title' );
+		$wp_customize->remove_setting( 'lightning_theme_options[sidebar_fix]' );
+		$wp_customize->remove_control( 'lightning_theme_options[sidebar_fix]' );
 
 		// Main Culumn Width.
 		$wp_customize->add_setting(

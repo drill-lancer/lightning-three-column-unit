@@ -17,9 +17,6 @@ class Lightning_Three_Column_Unit {
 		add_filter( 'lighghtning_columns_setting_choice', array( __CLASS__, 'columns_setting_choice' ) );
 		add_filter( 'lightning_get_the_class_names', array( __CLASS__, 'get_the_class_names' ) );
 		add_action( 'wp_head', array( __CLASS__, 'render_style' ), 5 );
-		$options                = get_option( 'lightning_theme_options' );
-		$options['sidebar_fix'] = 'no-fix';
-		update_option( 'lightning_theme_options', $options );
 	}
 
 	/**
@@ -48,8 +45,10 @@ class Lightning_Three_Column_Unit {
 	 */
 	public static function get_the_class_names( $class_names, $position = '' ) {
 
-		$skin_info = Lightning_Design_Manager::get_current_skin();
-		$options   = get_option( 'lightning_theme_options' );
+		$skin_info              = Lightning_Design_Manager::get_current_skin();
+		$options                = get_option( 'lightning_theme_options' );
+		$options['sidebar_fix'] = 'no-fix';
+		update_option( 'lightning_theme_options', $options );
 
 		$one_column_layout   = lightning_is_layout_onecolumn();
 		$two_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column();
