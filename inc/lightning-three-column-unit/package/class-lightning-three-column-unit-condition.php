@@ -26,8 +26,6 @@ class Lightning_Three_Column_Unit_Condition {
 					if ( 'col-two' === $options['layout'][ $key ] ) {
 						$two_column = true;
 					}
-				} else {
-					$two_column = true;
 				}
 			}
 		}
@@ -37,8 +35,6 @@ class Lightning_Three_Column_Unit_Condition {
 				if ( 'col-two' === $options['layout']['front-page'] ) {
 					$two_column = true;
 				}
-			} else {
-				$two_column = true;
 			}
 		} elseif ( is_front_page() && is_home() ) {
 			if ( isset( $options['layout']['front-page'] ) ) {
@@ -49,16 +45,12 @@ class Lightning_Three_Column_Unit_Condition {
 						$two_column = true;
 					}
 				}
-			} else {
-				$two_column = true;
 			}
 		} elseif ( ! is_front_page() && is_home() ) {
 			if ( isset( $options['layout']['archive-post'] ) ) {
 				if ( 'col-two' === $options['layout']['archive-post'] ) {
 					$two_column = true;
 				}
-			} else {
-				$two_column = true;
 			}
 		}
 
@@ -81,8 +73,6 @@ class Lightning_Three_Column_Unit_Condition {
 					if ( 'col-two' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
 						$two_column = true;
 					}
-				} else {
-					$two_column = true;
 				}
 			}
 		}
@@ -95,8 +85,6 @@ class Lightning_Three_Column_Unit_Condition {
 					if ( 'col-two' === $options['layout'][ 'single-' . $single_post_type ] ) {
 						$two_column = true;
 					}
-				} else {
-					$two_column = true;
 				}
 			}
 			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
