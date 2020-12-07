@@ -25,7 +25,11 @@ class Lightning_Three_Column_Unit_Condition {
 				if ( isset( $options['layout'][ $key ] ) ) {
 					if ( 'col-two' === $options['layout'][ $key ] ) {
 						$two_column = true;
+					} elseif ( 'default' === $options['layout'][ $key ] ) {
+						$two_column = true;
 					}
+				} else {
+					$two_column = true;
 				}
 			}
 		}
@@ -34,17 +38,29 @@ class Lightning_Three_Column_Unit_Condition {
 			if ( isset( $options['layout']['front-page'] ) ) {
 				if ( 'col-two' === $options['layout']['front-page'] ) {
 					$two_column = true;
+				} elseif ( 'default' === $options['layout']['front-page'] ) {
+					$two_column = true;
 				}
+			} else {
+				$two_column = true;
 			}
 		} elseif ( is_front_page() && is_home() ) {
 			if ( isset( $options['layout']['front-page'] ) ) {
 				if ( 'col-two' === $options['layout']['front-page'] ) {
 					$two_column = true;
+				} elseif ( 'default' === $options['layout']['front-page'] ) {
+					$two_column = true;
 				} elseif ( isset( $options['layout']['archive-post'] ) ) {
 					if ( 'col-two' === $options['layout']['archive-post'] ) {
 						$two_column = true;
+					} elseif ( 'default' === $options['layout']['archive-post'] ) {
+						$two_column = true;
 					}
+				} else {
+					$two_column = true;
 				}
+			} else {
+				$two_column = true;
 			}
 		} elseif ( ! is_front_page() && is_home() ) {
 			if ( isset( $options['layout']['archive-post'] ) ) {
@@ -371,61 +387,59 @@ class Lightning_Three_Column_Unit_Condition {
 		$three_column_set = false;
 
 		$options = get_option( 'lightning_theme_options' );
-		if ( ! empty( $options['layout'] ) ) {
-			if ( in_array( 'col-three-content-left', $options['layout'], true ) ) {
-				$three_column_set = true;
-			}
-			if ( in_array( 'col-three-content-center', $options['layout'], true ) ) {
-				$three_column_set = true;
-			}
-			if ( in_array( 'col-three-content-right', $options['layout'], true ) ) {
-				$three_column_set = true;
-			}
-		}
 
 		$three_column_content_left_posts = get_posts(
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_key'       => '_lightning_design_setting',
-				'meta_value'     => array(
-					'layout' => 'col-three-content-left',
+				'meta_query'     => array(
+					'key'     => '_lightning_design_setting',
+					'value'   => 'col-three-content-left',
+					'compare' => 'LIKE',
 				),
 			)
 		);
-
-		if ( ! empty( $three_column_content_left_posts ) ) {
-			$three_column_set = true;
-		}
 
 		$three_column_content_center_posts = get_posts(
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_key'       => '_lightning_design_setting',
-				'meta_value'     => array(
-					'layout' => 'col-three-content-center',
+				'meta_query'     => array(
+					'key'     => '_lightning_design_setting',
+					'value'   => 'col-three-content-center',
+					'compare' => 'LIKE',
 				),
 			)
 		);
-
-		if ( ! empty( $three_column_content_center_posts ) ) {
-			$three_column_set = true;
-		}
 
 		$three_column_content_right_posts = get_posts(
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_key'       => '_lightning_design_setting',
-				'meta_value'     => array(
-					'layout' => 'col-three-content-right',
+				'meta_query'     => array(
+					'key'     => '_lightning_design_setting',
+					'value'   => 'col-three-content-right',
+					'compare' => 'LIKE',
 				),
 			)
 		);
 
-		if ( ! empty( $three_column_content_right_posts ) ) {
+		if ( ! empty( $options['layout'] ) ) {
+			if ( in_array( 'col-three-content-left', $options['layout'], true ) ) {
+				$three_column_set = true;
+			} elseif ( in_array( 'col-three-content-center', $options['layout'], true ) ) {
+				$three_column_set = true;
+			} elseif ( in_array( 'col-three-content-right', $options['layout'], true ) ) {
+				$three_column_set = true;
+			}
+		} elseif ( ! empty( $three_column_content_left_posts ) ) {
 			$three_column_set = true;
+		} elseif ( ! empty( $three_column_content_center_posts ) ) {
+			$three_column_set = true;
+		} elseif ( ! empty( $three_column_content_right_posts ) ) {
+			$three_column_set = true;
+		} else {
+			$three_column_set = false;
 		}
 
 		return $three_column_set;
