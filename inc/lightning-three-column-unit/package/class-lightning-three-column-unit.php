@@ -209,7 +209,6 @@ class Lightning_Three_Column_Unit {
 				}
 				';
 			}
-
 		} elseif ( $two_column_layout ) {
 			// 2 Column Layout.
 			$main_width_wide = $main_width * ( $container_3col_width - $column_margin ) / ( $container_2col_width - $column_margin );
@@ -670,19 +669,20 @@ class Lightning_Three_Column_Unit {
 						.mainSection {
 							width: ' . $main_width . 'px;
 							max-width: ' . $main_width . 'px;
-							margin-left: ' . $column_margin . 'px;
 							margin-right: ' . $column_margin . 'px;
 							order: 0;
 						}
 						.sideSection {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
+							margin-right: ' . $column_margin . 'px;
 							order: 1;
 						}
 						.addSection {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
 							order: 2;
+							display: block;
 						}
 					}
 					';
@@ -696,7 +696,6 @@ class Lightning_Three_Column_Unit {
 						.mainSection {
 							width: ' . $main_width . 'px;
 							max-width: ' . $main_width . 'px;
-							margin-left: ' . $column_margin . 'px;
 							margin-right: ' . $column_margin . 'px;
 							order: 0;
 						}
@@ -708,7 +707,9 @@ class Lightning_Three_Column_Unit {
 						.addSection {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
+							margin-right: ' . $column_margin . 'px;
 							order: 1;
+							display: block;
 						}
 					}
 					';
@@ -737,6 +738,7 @@ class Lightning_Three_Column_Unit {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
 							order: 2;
+							display: block;
 						}
 					}
 					';
@@ -763,6 +765,7 @@ class Lightning_Three_Column_Unit {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
 							order: 0;
+							display: block;
 						}
 					}
 					';
@@ -779,7 +782,6 @@ class Lightning_Three_Column_Unit {
 							width: ' . $main_width . 'px;
 							max-width: ' . $main_width . 'px;
 							margin-left: ' . $column_margin . 'px;
-							margin-right: ' . $column_margin . 'px;
 							order: 2;
 						}
 						.sideSection {
@@ -790,7 +792,9 @@ class Lightning_Three_Column_Unit {
 						.addSection {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
+							margin-left: ' . $column_margin . 'px;
 							order: 1;
+							display: block;
 						}
 					}
 					';
@@ -817,6 +821,7 @@ class Lightning_Three_Column_Unit {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
 							order: 0;
+							display: block;
 						}
 					}
 					';

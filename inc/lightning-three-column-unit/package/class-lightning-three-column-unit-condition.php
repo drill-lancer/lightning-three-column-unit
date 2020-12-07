@@ -392,11 +392,9 @@ class Lightning_Three_Column_Unit_Condition {
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_query'     => array(
-					'key'     => '_lightning_design_setting',
-					'value'   => 'col-three-content-left',
-					'compare' => 'LIKE',
-				),
+				'meta_key'       => '_lightning_design_setting',
+				'meta_value'     => 'col-three-content-left',
+				'meta_compare'   => 'LIKE',
 			)
 		);
 
@@ -404,11 +402,10 @@ class Lightning_Three_Column_Unit_Condition {
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_query'     => array(
-					'key'     => '_lightning_design_setting',
-					'value'   => 'col-three-content-center',
-					'compare' => 'LIKE',
-				),
+				'post_status'    => 'publish',
+				'meta_key'       => '_lightning_design_setting',
+				'meta_value'     => 'col-three-content-center',
+				'meta_compare'   => 'LIKE',
 			)
 		);
 
@@ -416,14 +413,20 @@ class Lightning_Three_Column_Unit_Condition {
 			array(
 				'post_type'      => 'any',
 				'posts_per_page' => -1,
-				'meta_query'     => array(
-					'key'     => '_lightning_design_setting',
-					'value'   => 'col-three-content-right',
-					'compare' => 'LIKE',
-				),
+				'post_status'    => 'publish',
+				'meta_key'       => '_lightning_design_setting',
+				'meta_value'     => 'col-three-content-right',
+				'meta_compare'   => 'LIKE',
 			)
 		);
 
+		if ( ! empty( $three_column_content_left_posts ) ) {
+			$three_column_set = true;
+		} elseif ( ! empty( $three_column_content_center_posts ) ) {
+			$three_column_set = true;
+		} elseif ( ! empty( $three_column_content_right_posts ) ) {
+			$three_column_set = true;
+		}
 		if ( ! empty( $options['layout'] ) ) {
 			if ( in_array( 'col-three-content-left', $options['layout'], true ) ) {
 				$three_column_set = true;
@@ -432,16 +435,9 @@ class Lightning_Three_Column_Unit_Condition {
 			} elseif ( in_array( 'col-three-content-right', $options['layout'], true ) ) {
 				$three_column_set = true;
 			}
-		} elseif ( ! empty( $three_column_content_left_posts ) ) {
-			$three_column_set = true;
-		} elseif ( ! empty( $three_column_content_center_posts ) ) {
-			$three_column_set = true;
-		} elseif ( ! empty( $three_column_content_right_posts ) ) {
-			$three_column_set = true;
 		} else {
 			$three_column_set = false;
 		}
-
 		return $three_column_set;
 
 	}

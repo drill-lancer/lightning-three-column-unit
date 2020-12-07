@@ -14,14 +14,14 @@ class Lightning_Three_Column_Unit_Widget_Area {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'widget_init', array( __CLASS__, 'register_sidebar' ) );
+		add_action( 'init', array( __CLASS__, 'register_widget_area' ) );
 		add_action( 'lightning_additional_section', array( __CLASS__, 'add_sidebar' ) );
 	}
 
 	/**
 	 * Register Sidebar
 	 */
-	public static function register_sidebar() {
+	public static function register_widget_area() {
 		register_sidebar(
 			array(
 				'name'          => __( 'Additional Sidebar', 'lightning-three-column-unit' ),
