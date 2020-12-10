@@ -158,10 +158,6 @@ class Lightning_Three_Column_Unit {
 			justify-content: space-between;
 			flex-wrap: wrap;
 		}
-		.mainSection-base-on,
-		.sideSection-base-on {
-			background-color: transparent;
-		}
 		.sideSection,
 		.mainSection,
 		.addSection {
