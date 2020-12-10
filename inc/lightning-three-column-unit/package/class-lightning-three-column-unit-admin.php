@@ -24,7 +24,7 @@ class Lightning_Three_Column_Unit_Admin {
 		$args = array(
 			'main_width'             => '680',
 			'side_width'             => '320',
-			'column_margin'          => '20',
+			'column_margin'          => '40',
 			'outer_container_margin' => '40',
 			'three-to-one-via-two'   => 'disable',
 			'main_sidebar_control'   => 'wrap-down',
