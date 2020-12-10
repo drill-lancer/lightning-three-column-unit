@@ -153,13 +153,10 @@ class Lightning_Three_Column_Unit {
 		$min_3col_width       = $container_3col_width + $outer_container_margin;
 
 		$dynamic_css = '
-		.siteContent>.container>.row,
-		.siteContent.siteContent-base-on>.container>.row {
+		.siteContent>.container>.row {
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			margin-left: -15px;
-			margin-right: -15px;
 		}
 		.mainSection-base-on,
 		.sideSection-base-on {
