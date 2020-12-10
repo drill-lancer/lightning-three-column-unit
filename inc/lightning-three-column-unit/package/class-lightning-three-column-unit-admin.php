@@ -51,11 +51,15 @@ class Lightning_Three_Column_Unit_Admin {
 			)
 		);
 
-		// Main Culumn Width.
+		// Remove Customize.
 		$wp_customize->remove_setting( 'ltg_sidebar_fix_setting_title' );
 		$wp_customize->remove_control( 'ltg_sidebar_fix_setting_title' );
 		$wp_customize->remove_setting( 'lightning_theme_options[sidebar_fix]' );
 		$wp_customize->remove_control( 'lightning_theme_options[sidebar_fix]' );
+		$wp_customize->remove_setting( 'section_base_setting' );
+		$wp_customize->remove_control( 'section_base_setting' );
+		$wp_customize->remove_setting( 'lightning_theme_options[section_base]' );
+		$wp_customize->remove_control( 'lightning_theme_options[section_base]' );
 
 		// Main Culumn Width.
 		$wp_customize->add_setting(

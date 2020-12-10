@@ -45,9 +45,10 @@ class Lightning_Three_Column_Unit {
 	 */
 	public static function get_the_class_names( $class_names, $position = '' ) {
 
-		$skin_info              = Lightning_Design_Manager::get_current_skin();
-		$options                = get_option( 'lightning_theme_options' );
-		$options['sidebar_fix'] = 'no-fix';
+		$skin_info               = Lightning_Design_Manager::get_current_skin();
+		$options                 = get_option( 'lightning_theme_options' );
+		$options['sidebar_fix']  = 'no-fix';
+		$options['section_base'] = 'no';
 		update_option( 'lightning_theme_options', $options );
 
 		$one_column_layout   = lightning_is_layout_onecolumn();
@@ -152,10 +153,17 @@ class Lightning_Three_Column_Unit {
 		$min_3col_width       = $container_3col_width + $outer_container_margin;
 
 		$dynamic_css = '
-		.siteContent>.container>.row {
+		.siteContent>.container>.row,
+		.siteContent.siteContent-base-on>.container>.row {
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+		.mainSection-base-on,
+		.sideSection-base-on {
+			background-color: transparent;
 		}
 		.sideSection,
 		.mainSection,
