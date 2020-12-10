@@ -45,13 +45,12 @@ class Lightning_Three_Column_Unit {
 	 */
 	public static function get_the_class_names( $class_names, $position = '' ) {
 
-		$skin_info               = Lightning_Design_Manager::get_current_skin();
 		$options                 = get_option( 'lightning_theme_options' );
 		$options['sidebar_fix']  = 'no-fix';
 		$options['section_base'] = 'no';
 		update_option( 'lightning_theme_options', $options );
 
-		$one_column_layout   = lightning_is_layout_onecolumn();
+		$one_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_one_column();
 		$two_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column();
 		$three_column_layout = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column();
 
@@ -126,7 +125,7 @@ class Lightning_Three_Column_Unit {
 		$default = Lightning_Three_Column_Unit_Admin::default_option();
 		$options = wp_parse_args( $options, $default );
 
-		$one_column_layout   = lightning_is_layout_onecolumn();
+		$one_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_one_column();
 		$two_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_two_column();
 		$three_column_layout = Lightning_Three_Column_Unit_Condition::lightning_is_layout_three_column();
 

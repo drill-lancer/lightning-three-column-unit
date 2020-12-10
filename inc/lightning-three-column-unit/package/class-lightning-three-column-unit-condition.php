@@ -11,10 +11,141 @@
 class Lightning_Three_Column_Unit_Condition {
 
 	/**
+	 * Lightning Layout Target Array
+	 */
+	public static function lightning_layout_target_array() {
+		$array = array(
+			'error404'       => array(
+				'function' => 'is_404',
+			),
+			'search'         => array(
+				'function' => 'is_search',
+			),
+			'archive-author' => array(
+				'function' => 'is_author',
+			),
+		);
+		return $array;
+	}
+
+	/**
+	 * Lightning Is Layout One Column
+	 *
+	 * @since Lightning 9.0.0
+	 * @return boolean
+	 */
+	public function lightning_is_layout_one_column() {
+		$onecolumn = false;
+		$options   = get_option( 'lightning_theme_options' );
+		global $wp_query;
+
+		$array = self::lightning_layout_target_array();
+
+		foreach ( $array as $key => $value ) {
+			if ( call_user_func( $value['function'] ) ) {
+				if ( isset( $options['layout'][ $key ] ) ) {
+					if ( 'col-one' === $options['layout'][ $key ] || 'col-one-no-subsection' === $options['layout'][ $key ] ) {
+						$onecolumn = true;
+					}
+				}
+			}
+		}
+
+		if ( is_front_page() && ! is_home() ) {
+			// show_on_front 'page' case.
+			if ( isset( $options['layout']['front-page'] ) ) {
+				if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
+					$onecolumn = true;
+				}
+			} else {
+				$page_on_front_id = get_option( 'page_on_front' );
+				if ( $page_on_front_id ) {
+					$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
+					if ( 'page-onecolumn.php' === $template || 'page-lp.php' === $template ) {
+						$onecolumn = true;
+					}
+				}
+			}
+		} elseif ( is_front_page() && is_home() ) {
+			// show_on_front 'posts' case.
+			if ( isset( $options['layout']['front-page'] ) ) {
+				if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
+					$onecolumn = true;
+				} elseif ( isset( $options['layout']['archive-post'] ) ) {
+					if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+						$onecolumn = true;
+					}
+				}
+			}
+		} elseif ( ! is_front_page() && is_home() ) {
+			if ( isset( $options['layout']['archive-post'] ) ) {
+				if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+					$onecolumn = true;
+				}
+			}
+		}
+
+		$additional_post_types = get_post_types(
+			array(
+				'public'   => true,
+				'_builtin' => false,
+			),
+			'names'
+		);
+
+		/**
+		 * アーカイブページの場合
+		 */
+		if ( is_archive() && ! is_search() && ! is_author() ) {
+			$current_post_type_info = lightning_get_post_type();
+			$archive_post_types     = array( 'post' ) + $additional_post_types;
+			foreach ( $archive_post_types as $archive_post_type ) {
+				if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
+					if ( 'col-one' === $options['layout'][ 'archive-' . $archive_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
+						$onecolumn = true;
+					}
+				}
+			}
+		}
+
+		if ( is_singular() ) {
+			global $post;
+			$single_post_types = array( 'post', 'page' ) + $additional_post_types;
+			foreach ( $single_post_types as $single_post_type ) {
+				if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
+					if ( 'col-one' === $options['layout'][ 'single-' . $single_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'single-' . $single_post_type ] ) {
+						$onecolumn = true;
+					}
+				}
+			}
+			if ( is_page() ) {
+				$template           = get_post_meta( $post->ID, '_wp_page_template', true );
+				$template_onecolumn = array(
+					'page-onecolumn.php',
+					'page-lp.php',
+				);
+				if ( in_array( $template, $template_onecolumn, true ) ) {
+					$onecolumn = true;
+				}
+			}
+			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
+				if ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
+					$onecolumn = false;
+				} elseif ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
+					$onecolumn = true;
+				} elseif ( 'col-one' === $post->_lightning_design_setting['layout'] ) {
+					$onecolumn = true;
+				}
+			}
+		}
+		return apply_filters( 'lightning_is_layout_one_column', $onecolumn );
+	}
+
+	/**
 	 * Lightning is 2 Column
 	 */
 	public static function lightning_is_layout_two_column() {
-		$one_column          = lightning_is_layout_onecolumn();
+		$one_column          = self::lightning_is_layout_one_column();
 		$three_column_left   = self::lightning_is_layout_three_column_content_left();
 		$three_column_center = self::lightning_is_layout_three_column_content_center();
 		$three_column_right  = self::lightning_is_layout_three_column_content_right();
@@ -29,7 +160,7 @@ class Lightning_Three_Column_Unit_Condition {
 		$options           = get_option( 'lightning_theme_options' );
 		global $wp_query;
 
-		$array = lightning_layout_target_array();
+		$array = self::lightning_layout_target_array();
 
 		foreach ( $array as $key => $value ) {
 			if ( call_user_func( $value['function'] ) ) {
@@ -115,7 +246,7 @@ class Lightning_Three_Column_Unit_Condition {
 		$options             = get_option( 'lightning_theme_options' );
 		global $wp_query;
 
-		$array = lightning_layout_target_array();
+		$array = self::lightning_layout_target_array();
 
 		foreach ( $array as $key => $value ) {
 			if ( call_user_func( $value['function'] ) ) {
@@ -201,7 +332,7 @@ class Lightning_Three_Column_Unit_Condition {
 		$options            = get_option( 'lightning_theme_options' );
 		global $wp_query;
 
-		$array = lightning_layout_target_array();
+		$array = self::lightning_layout_target_array();
 
 		foreach ( $array as $key => $value ) {
 			if ( call_user_func( $value['function'] ) ) {
