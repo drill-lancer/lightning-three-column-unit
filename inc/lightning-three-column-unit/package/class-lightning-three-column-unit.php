@@ -519,7 +519,7 @@ class Lightning_Three_Column_Unit {
 								.mainSection {
 									width: ' . $main_width . 'px;
 									max-width: ' . $main_width . 'px;
-									margin-right: ' . $column_margin . 'px;
+									margin-left: ' . $column_margin . 'px;
 									order: 1;
 								}
 								.sideSection {
@@ -544,7 +544,7 @@ class Lightning_Three_Column_Unit {
 								.mainSection {
 									width: ' . $main_width . 'px;
 									max-width: ' . $main_width . 'px;
-									margin-right: ' . $column_margin . 'px;
+									margin-left: ' . $column_margin . 'px;
 									order: 1;
 								}
 								.sideSection {
@@ -622,7 +622,7 @@ class Lightning_Three_Column_Unit {
 							.mainSection {
 								width: ' . $main_width . 'px;
 								max-width: ' . $main_width . 'px;
-								margin-right: ' . $column_margin . 'px;
+								margin-left: ' . $column_margin . 'px;
 								order: 1;
 							}
 							.sideSection {
@@ -647,7 +647,7 @@ class Lightning_Three_Column_Unit {
 							.mainSection {
 								width: ' . $main_width . 'px;
 								max-width: ' . $main_width . 'px;
-								margin-right: ' . $column_margin . 'px;
+								margin-left: ' . $column_margin . 'px;
 								order: 1;
 							}
 							.sideSection {
@@ -816,12 +816,12 @@ class Lightning_Three_Column_Unit {
 							width: ' . $main_width . 'px;
 							max-width: ' . $main_width . 'px;
 							margin-left: ' . $column_margin . 'px;
-							margin-right: ' . $column_margin . 'px;
 							order: 2;
 						}
 						.sideSection {
 							width: ' . $side_width . 'px;
 							max-width: ' . $side_width . 'px;
+							margin-left: ' . $column_margin . 'px;
 							order: 1;
 						}
 						.addSection {
