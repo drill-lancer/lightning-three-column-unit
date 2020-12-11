@@ -34,7 +34,7 @@ class Lightning_Three_Column_Unit_Condition {
 	 * @since Lightning 9.0.0
 	 * @return boolean
 	 */
-	public function lightning_is_layout_one_column() {
+	public static function lightning_is_layout_one_column() {
 		$onecolumn = false;
 		$options   = get_option( 'lightning_theme_options' );
 		global $wp_query;

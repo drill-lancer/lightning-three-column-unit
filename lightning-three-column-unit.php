@@ -15,13 +15,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( 'lightning' !== get_template() && 'lightning-pro' !== get_template() ) {
+if ( 'lightning' === get_template() || 'lightning-pro' === get_template() ) {
+	$data = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+	define( 'LTCU_VERSION', $data['version'] );
+
+	define( 'LTCU_PATH', plugin_dir_path( __FILE__ ) );
+	load_plugin_textdomain( 'lightning-three-column-unit', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	require_once LTCU_PATH . '/inc/lightning-three-column-unit/lightning-three-column-unit-config.php';
+} else {
 	return;
 }
 
-$data = get_file_data( __FILE__, array( 'version' => 'Version' ) );
-define( 'LTCU_VERSION', $data['version'] );
 
-define( 'LTCU_PATH', plugin_dir_path( __FILE__ ) );
-load_plugin_textdomain( 'lightning-three-column-unit', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-require_once LTCU_PATH . '/inc/lightning-three-column-unit/lightning-three-column-unit-config.php';
