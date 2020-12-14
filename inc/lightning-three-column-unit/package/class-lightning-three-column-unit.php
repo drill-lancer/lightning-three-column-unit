@@ -216,13 +216,15 @@ class Lightning_Three_Column_Unit {
 		}
 
 		@media (min-width: 768px) {
-			.mainSection-base-on, .addSection-base-on {
+			.mainSection-base-on,
+			.addSection-base-on {
 				padding: 2rem;
 			}
 		}
 
 		@media (min-width: 576px) {
-			.mainSection-base-on, .addSection-base-on {
+			.mainSection-base-on,
+			.addSection-base-on {
 				padding: 1.7rem;
 			}
 		}
@@ -251,14 +253,36 @@ class Lightning_Three_Column_Unit {
 			.navbar-header {
 				float: none;
 			}
-			.headerTop {
-				display: none;
-			}
 			.siteHeadContainer.container .navbar-header {
 				padding: 0;
 			}
 		}
 		';
+
+		if ( 'display' === $options['narrow_window_description'] ) {
+			$dynamic_css .= '
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.headerTop {
+						display: block;
+					}
+					.headerTop .headerTop_description {
+						text-align: center; 
+					}
+					.headerTop nav {
+						display: none;
+					}
+					.headerTop .headerTop_contactBtn {
+						display: none;
+					}
+			';
+		} else {
+			$dynamic_css .= '
+			@media ( max-width: ' . $max_1col_width . 'px ) {
+				.headerTop {
+					display: none;
+				}
+			';
+		}
 
 		if ( $one_column_layout ) {
 			// 1 Column Layout.

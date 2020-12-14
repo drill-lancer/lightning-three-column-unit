@@ -22,13 +22,14 @@ class Lightning_Three_Column_Unit_Admin {
 	 */
 	public static function default_option() {
 		$args = array(
-			'main_width'             => '680',
-			'side_width'             => '320',
-			'column_margin'          => '40',
-			'outer_container_margin' => '40',
-			'three-to-one-via-two'   => 'disable',
-			'main_sidebar_control'   => 'wrap-down',
-			'sub_sidebar_control'    => 'hidden',
+			'main_width'                => '680',
+			'side_width'                => '320',
+			'column_margin'             => '40',
+			'outer_container_margin'    => '40',
+			'three-to-one-via-two'      => 'disable',
+			'main_sidebar_control'      => 'wrap-down',
+			'sub_sidebar_control'       => 'hide',
+			'narrow_window_description' => 'hide',
 		);
 		return $args;
 	}
@@ -180,7 +181,7 @@ class Lightning_Three_Column_Unit_Admin {
 				'type'     => 'select',
 				'choices'  => array(
 					'wrap-down' => __( 'Wrap Down', 'lightning-three-column-unit' ),
-					'hidden'    => __( 'Hidden', 'lightning-three-column-unit' ),
+					'hide'      => __( 'Hide', 'lightning-three-column-unit' ),
 				),
 			)
 		);
@@ -204,7 +205,31 @@ class Lightning_Three_Column_Unit_Admin {
 				'type'     => 'select',
 				'choices'  => array(
 					'wrap-down' => __( 'Wrap Down', 'lightning-three-column-unit' ),
-					'hidden'    => __( 'Hidden', 'lightning-three-column-unit' ),
+					'hide'      => __( 'Hide', 'lightning-three-column-unit' ),
+				),
+			)
+		);
+
+		// Narrow Window Discription.
+		$wp_customize->add_setting(
+			'lightning_three_column_unit_options[narrow_window_description]',
+			array(
+				'default'           => $default_option['narrow_window_description'],
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		$wp_customize->add_control(
+			'lightning_three_column_unit_options[narrow_window_description]',
+			array(
+				'label'    => __( 'Top Description Control', 'lightning-three-column-unit' ),
+				'section'  => 'lightning_three_column_unit_setting',
+				'settings' => 'lightning_three_column_unit_options[narrow_window_description]',
+				'type'     => 'select',
+				'choices'  => array(
+					'display' => __( 'Display', 'lightning-three-column-unit' ),
+					'hide'    => __( 'Hide', 'lightning-three-column-unit' ),
 				),
 			)
 		);
