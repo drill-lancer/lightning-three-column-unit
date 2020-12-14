@@ -231,6 +231,33 @@ class Lightning_Three_Column_Unit {
 			background-color: #fff;
 			padding: 1.4rem;
 		}
+
+		@media  ( max-width: ' . $max_1col_width . 'px ) {
+			body.device-pc .vk-mobile-nav-menu-btn {
+				display: block;
+			}
+			.siteHeader_logo {
+				font-size: 1.6rem;
+				float: inherit;
+				text-align: center;
+				display: block;
+				margin: 0 auto;
+				padding: 0 45px;
+			}
+			.siteHeader_logo.navbar-brand {
+				float: none;
+				height: auto;
+			}
+			.navbar-header {
+				float: none;
+			}
+			.headerTop {
+				display: none;
+			}
+			.siteHeadContainer.container .navbar-header {
+				padding: 0;
+			}
+		}
 		';
 
 		if ( $one_column_layout ) {
@@ -438,7 +465,7 @@ class Lightning_Three_Column_Unit {
 			}
 		} elseif ( $three_column_layout ) {
 			// 3 column Layout.
-			$max_width = 'enable' === $options['three-to-one-via-two'] ? $max_1col_width : $min_2col_width;
+			$max_width = 'enable' === $options['three-to-one-via-two'] ? $max_1col_width : $max_2col_width;
 
 			// 1 Column.
 			if ( 'wrap-down' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
