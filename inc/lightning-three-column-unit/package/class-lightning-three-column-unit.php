@@ -257,6 +257,9 @@ class Lightning_Three_Column_Unit {
 			.siteHeadContainer.container .navbar-header {
 				padding: 0;
 			}
+			.gMenu_outer {
+				display: none;
+			}
 		}
 		';
 
