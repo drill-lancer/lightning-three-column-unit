@@ -67,7 +67,7 @@ msgstr "下に回り込ませる"
 
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:177
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:201
-msgid "Hidden"
+msgid "Hide"
 msgstr "非表示"
 
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:195

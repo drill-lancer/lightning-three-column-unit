@@ -266,7 +266,7 @@ class Lightning_Three_Column_Unit {
 						display: block;
 					}
 					.headerTop .headerTop_description {
-						text-align: center; 
+						text-align: center;
 					}
 					.headerTop nav {
 						display: none;
@@ -274,6 +274,7 @@ class Lightning_Three_Column_Unit {
 					.headerTop .headerTop_contactBtn {
 						display: none;
 					}
+				}
 			';
 		} else {
 			$dynamic_css .= '
@@ -507,7 +508,7 @@ class Lightning_Three_Column_Unit {
 					}
 				}
 				';
-			} elseif ( 'wrap-down' === $options['main_sidebar_control'] && 'hidden' === $options['sub_sidebar_control'] ) {
+			} elseif ( 'wrap-down' === $options['main_sidebar_control'] && 'hide' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
 					' . $container_class . ' {
@@ -525,7 +526,7 @@ class Lightning_Three_Column_Unit {
 					}
 				}
 				';
-			} elseif ( 'hidden' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
+			} elseif ( 'hide' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
 					' . $container_class . ' {
