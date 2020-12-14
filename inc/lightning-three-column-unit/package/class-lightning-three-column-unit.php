@@ -181,7 +181,8 @@ class Lightning_Three_Column_Unit {
 		if ( in_array( $current_skin, $special_condiston, true ) ) {
 			$container_class = '
 			.container,
-			.siteHeadContainer.container .navbar-header
+			.siteHeadContainer.container .navbar-header,
+			.gMenu_outer nav
 			';
 		} else {
 			$container_class = '.container';
