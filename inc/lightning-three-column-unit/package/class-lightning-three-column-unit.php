@@ -47,7 +47,6 @@ class Lightning_Three_Column_Unit {
 
 		$options                 = get_option( 'lightning_theme_options' );
 		$options['sidebar_fix']  = 'no-fix';
-		$options['section_base'] = 'no';
 		update_option( 'lightning_theme_options', $options );
 
 		$one_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_one_column();
@@ -97,6 +96,7 @@ class Lightning_Three_Column_Unit {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-three baseSection';
 			if ( ! empty( $options['sidebar_position'] ) && 'left' === $options['sidebar_position'] ) {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-three baseSection';
+				$class_names['addSection']  = 'col subSection addSection addSection-col-three baseSection';
 			} else {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-three baseSection';
 				$class_names['addSection']  = 'col subSection addSection addSection-col-three baseSection';
@@ -112,6 +112,18 @@ class Lightning_Three_Column_Unit {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-three baseSection';
 				$class_names['addSection']  = 'col subSection addSection addSection-col-three baseSection';
 			}
+		}
+
+		if ( function_exists( 'lightning_is_base_active' ) && lightning_is_base_active() ) {
+			$class_names['siteContent'] = $class_names['siteContent'] . ' siteContent-base-on';
+			$class_names['mainSection'] = $class_names['mainSection'] . ' mainSection-base-on';
+			$class_names['sideSection'] = $class_names['sideSection'] . ' sideSection-base-on';
+			$class_names['addSection']  = $class_names['addSection'] . ' addSection-base-on';
+		} else {
+			$class_names['siteContent'] = str_replace( ' siteContent-base-on', '', $class_names['siteContent'] );
+			$class_names['mainSection'] = str_replace( ' mainSection-base-on', '', $class_names['mainSection'] );
+			$class_names['sideSection'] = str_replace( ' sideSection-base-on', '', $class_names['sideSection'] );
+			$class_names['addSection']  = str_replace( ' addSection-base-on', '', $class_names['addSection'] );
 		}
 
 		return $class_names;
@@ -165,8 +177,35 @@ class Lightning_Three_Column_Unit {
 			flex-basis: auto;
 			float:none;
 			margin: 0;
-			padding: 0;
-			background-color: transparent;
+		}
+		
+		@media (min-width: 1200px) {
+			.addSection-base-on {
+				padding: 2.4rem 2rem;
+			}
+		}
+
+		@media (min-width: 992px) {
+			.addSection-base-on {
+				padding: 2.4rem 1.7rem;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.mainSection-base-on, .addSection-base-on {
+				padding: 2rem;
+			}
+		}
+
+		@media (min-width: 576px) {
+			.mainSection-base-on, .addSection-base-on {
+				padding: 1.7rem;
+			}
+		}
+
+		.addSection-base-on {
+			background-color: #fff;
+			padding: 1.4rem;
 		}
 		';
 
