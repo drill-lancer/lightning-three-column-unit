@@ -45,8 +45,8 @@ class Lightning_Three_Column_Unit {
 	 */
 	public static function get_the_class_names( $class_names, $position = '' ) {
 
-		$options                 = get_option( 'lightning_theme_options' );
-		$options['sidebar_fix']  = 'no-fix';
+		$options                = get_option( 'lightning_theme_options' );
+		$options['sidebar_fix'] = 'no-fix';
 		update_option( 'lightning_theme_options', $options );
 
 		$one_column_layout   = Lightning_Three_Column_Unit_Condition::lightning_is_layout_one_column();
@@ -149,6 +149,8 @@ class Lightning_Three_Column_Unit {
 
 		$lightning_theme_option = get_option( 'lightning_theme_options' );
 
+		$current_skin = get_option( 'lightning_design_skin' );
+
 		$sidebar_position = ! empty( $lightning_theme_option['sidebar_position'] ) && 'left' === $lightning_theme_option['sidebar_position'] ? 'left' : 'right';
 
 		$main_width             = $options['main_width'];
@@ -162,6 +164,28 @@ class Lightning_Three_Column_Unit {
 		$min_2col_width       = $container_2col_width + $outer_container_margin;
 		$max_2col_width       = $container_3col_width + $outer_container_margin - 1;
 		$min_3col_width       = $container_3col_width + $outer_container_margin;
+
+		$special_condiston = array(
+			'variety',
+			'variety-bs4',
+			'fort',
+			'fort2',
+			'fort-bs4',
+			'fort-bs4-footer-light',
+			'pale',
+			'pale-bs4',
+		);
+
+		$container_class = '';
+
+		if ( in_array( $current_skin, $special_condiston, true ) ) {
+			$container_class = '
+			.container,
+			.siteHeadContainer.container .navbar-header
+			';
+		} else {
+			$container_class = '.container';
+		}
 
 		$dynamic_css = '
 		.siteContent>.container>.row,
@@ -178,7 +202,7 @@ class Lightning_Three_Column_Unit {
 			float:none;
 			margin: 0;
 		}
-		
+
 		@media (min-width: 1200px) {
 			.addSection-base-on {
 				padding: 2.4rem 2rem;
@@ -214,19 +238,19 @@ class Lightning_Three_Column_Unit {
 			if ( $three_column_set ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
 				}
 				@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( ' . $container_2col_width . 'px - ' . $outer_container_margin . 'px );
 						max-width: calc( ' . $container_2col_width . 'px - ' . $outer_container_margin . 'px );
 					}
 				}
 				@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( ' . $container_3col_width . 'px - ' . $outer_container_margin . 'px );
 						max-width: calc( ' . $container_3col_width . 'px - ' . $outer_container_margin . 'px );
 					}
@@ -240,13 +264,13 @@ class Lightning_Three_Column_Unit {
 			} else {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
 				}
 				@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: 9999px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( ' . $container_2col_width . 'px - ' . $outer_container_margin . 'px );
 						max-width: calc( ' . $container_2col_width . 'px - ' . $outer_container_margin . 'px );
 					}
@@ -262,7 +286,7 @@ class Lightning_Three_Column_Unit {
 			if ( 'wrap-down' === $options['main_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
@@ -276,7 +300,7 @@ class Lightning_Three_Column_Unit {
 			} else {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
@@ -297,7 +321,7 @@ class Lightning_Three_Column_Unit {
 				if ( $three_column_set ) {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_2col_width . 'px;
 							max-width: ' . $container_2col_width . 'px;
 						}
@@ -314,7 +338,7 @@ class Lightning_Three_Column_Unit {
 						}
 					}
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -334,7 +358,7 @@ class Lightning_Three_Column_Unit {
 				} else {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_2col_width . 'px;
 							max-width: ' . $container_2col_width . 'px;
 						}
@@ -356,7 +380,7 @@ class Lightning_Three_Column_Unit {
 				if ( $three_column_set ) {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_2col_width . 'px;
 							max-width: ' . $container_2col_width . 'px;
 						}
@@ -373,7 +397,7 @@ class Lightning_Three_Column_Unit {
 						}
 					}
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -393,7 +417,7 @@ class Lightning_Three_Column_Unit {
 				} else {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_2col_width . 'px;
 							max-width: ' . $container_2col_width . 'px;
 						}
@@ -420,7 +444,7 @@ class Lightning_Three_Column_Unit {
 			if ( 'wrap-down' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
@@ -435,7 +459,7 @@ class Lightning_Three_Column_Unit {
 			} elseif ( 'wrap-down' === $options['main_sidebar_control'] && 'hidden' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
@@ -453,7 +477,7 @@ class Lightning_Three_Column_Unit {
 			} elseif ( 'hidden' === $options['main_sidebar_control'] && 'wrap-down' === $options['sub_sidebar_control'] ) {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
@@ -471,7 +495,7 @@ class Lightning_Three_Column_Unit {
 			} else {
 				$dynamic_css .= '
 				@media ( max-width: ' . $max_width . 'px ) {
-					.container {
+					' . $container_class . ' {
 						width: calc( 100% - ' . $outer_container_margin . 'px );
 						max-width: calc( 100% - ' . $outer_container_margin . 'px );
 					}
@@ -496,7 +520,7 @@ class Lightning_Three_Column_Unit {
 					if ( 'wrap-down' === $options['sub_sidebar_control'] ) {
 						$dynamic_css .= '
 						@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-							.container {
+							' . $container_class . ' {
 								width: ' . $container_2col_width . 'px;
 								max-width: ' . $container_2col_width . 'px;
 							}
@@ -521,7 +545,7 @@ class Lightning_Three_Column_Unit {
 					} else {
 						$dynamic_css .= '
 						@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-							.container {
+							' . $container_class . ' {
 								width: ' . $container_2col_width . 'px;
 								max-width: ' . $container_2col_width . 'px;
 							}
@@ -549,7 +573,7 @@ class Lightning_Three_Column_Unit {
 						if ( 'wrap-down' === $options['sub_sidebar_control'] ) {
 							$dynamic_css .= '
 							@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-								.container {
+								' . $container_class . ' {
 									width: ' . $container_2col_width . 'px;
 									max-width: ' . $container_2col_width . 'px;
 								}
@@ -574,7 +598,7 @@ class Lightning_Three_Column_Unit {
 						} else {
 							$dynamic_css .= '
 							@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-								.container {
+								' . $container_class . ' {
 									width: ' . $container_2col_width . 'px;
 									max-width: ' . $container_2col_width . 'px;
 								}
@@ -600,7 +624,7 @@ class Lightning_Three_Column_Unit {
 						if ( 'wrap-down' === $options['sub_sidebar_control'] ) {
 							$dynamic_css .= '
 							@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-								.container {
+								' . $container_class . ' {
 									width: ' . $container_2col_width . 'px;
 									max-width: ' . $container_2col_width . 'px;
 								}
@@ -625,7 +649,7 @@ class Lightning_Three_Column_Unit {
 						} else {
 							$dynamic_css .= '
 							@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-								.container {
+								' . $container_class . ' {
 									width: ' . $container_2col_width . 'px;
 									max-width: ' . $container_2col_width . 'px;
 								}
@@ -652,7 +676,7 @@ class Lightning_Three_Column_Unit {
 					if ( 'wrap-down' === $options['sub_sidebar_control'] ) {
 						$dynamic_css .= '
 						@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-							.container {
+							' . $container_class . ' {
 								width: ' . $container_2col_width . 'px;
 								max-width: ' . $container_2col_width . 'px;
 							}
@@ -677,7 +701,7 @@ class Lightning_Three_Column_Unit {
 					} else {
 						$dynamic_css .= '
 						@media ( min-width: ' . $min_2col_width . 'px ) and ( max-width: ' . $max_2col_width . 'px ) {
-							.container {
+							' . $container_class . ' {
 								width: ' . $container_2col_width . 'px;
 								max-width: ' . $container_2col_width . 'px;
 							}
@@ -706,7 +730,7 @@ class Lightning_Three_Column_Unit {
 				if ( 'left' === $sidebar_position ) {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -733,7 +757,7 @@ class Lightning_Three_Column_Unit {
 				} else {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -762,7 +786,7 @@ class Lightning_Three_Column_Unit {
 				if ( 'left' === $sidebar_position ) {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -789,7 +813,7 @@ class Lightning_Three_Column_Unit {
 				} else {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -818,7 +842,7 @@ class Lightning_Three_Column_Unit {
 				if ( 'left' === $sidebar_position ) {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
@@ -845,7 +869,7 @@ class Lightning_Three_Column_Unit {
 				} else {
 					$dynamic_css .= '
 					@media ( min-width: ' . $min_3col_width . 'px ) and ( max-width: 9999px ) {
-						.container {
+						' . $container_class . ' {
 							width: ' . $container_3col_width . 'px;
 							max-width: ' . $container_3col_width . 'px;
 						}
