@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Lightning Three Column Unit\n"
-"POT-Creation-Date: 2020-12-07 10:31+0900\n"
-"PO-Revision-Date: 2020-12-07 10:31+0900\n"
+"POT-Creation-Date: 2020-12-16 09:14+0900\n"
+"PO-Revision-Date: 2020-12-16 09:15+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -20,92 +20,131 @@ msgstr ""
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
 
 #. Plugin Name of the plugin/theme
 #. Description of the plugin/theme
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:49
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:50
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:50
 msgid "Lightning Three Column Unit"
 msgstr "Lightning Three Column Unit"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:67
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:74
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:74
 msgid "Main Column Width Value ( px )"
 msgstr "メインセクションの幅（px）"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:87
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:94
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:94
 msgid "Side Column Width ( px )"
 msgstr "サイドバーの幅（px）"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:107
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:114
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:114
 msgid "Margin of Between Columns ( px )"
 msgstr "カラム間のマージン（px）"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:127
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:134
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:134
 msgid "Minumum Margin Sum for Out of Container ( px )"
 msgstr "コンテナの外の最低マージンの合計（px）"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:147
-msgid "When Three Column Layout is Selected, Make Two Column Layout"
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:154
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:154
+msgid ""
+"When Three Column Layout is Choosed and Narrowing Window Size, Make Two "
+"Column Layout"
 msgstr ""
-"3カラムレイアウトを選択時かつ幅が足りないときに２カラムレイアウトを生成する"
+"3カラムレイアウトを選択時かつウィンドウ幅を狭めたときに２カラムレイアウトを"
+"生成する"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:152
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:159
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:159
 msgid "Disable"
 msgstr "無効"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:153
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:160
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:160
 msgid "Enable"
 msgstr "有効"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:171
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:178
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:178
 msgid "Main Sidebar Control"
 msgstr "主サイドバーの制御"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:176
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:200
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:183
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:207
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:183
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:207
 msgid "Wrap Down"
 msgstr "下に回り込ませる"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:177
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:201
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:184
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:208
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:232
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:184
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:208
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:232
 msgid "Hide"
 msgstr "非表示"
 
-#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:195
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:202
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:202
 msgid "Sub Sidebar Control"
 msgstr "副サイドバーの制御"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:226
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:226
+msgid "Header Top Description Control on Narrow Window"
+msgstr "ウィンドウ幅が狭いときでもヘッダー上部のキャッチコピーを表示する"
+
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:231
+#: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-admin.php:231
+msgid "Display"
+msgstr "表示する"
+
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-widget-area.php:27
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-widget-area.php:27
 msgid "Additional Sidebar"
 msgstr "追加サイドバー"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit-widget-area.php:29
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit-widget-area.php:29
 msgid "Display only Three Column Layout"
 msgstr "3カラムレイアウトのみ表示"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:29
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:29
 msgid "Use common settings"
 msgstr "共通設定を適用"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:30
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:30
 msgid "1 column ( No sub section )"
 msgstr "１カラム（サブセクション無し）"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:31
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:31
 msgid "1 column"
 msgstr "１カラム"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:32
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:32
 msgid "2 column"
 msgstr "２カラム"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:33
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:33
 msgid "3 Column Content Left"
 msgstr "３カラム（メインセクション左）"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:34
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:34
 msgid "3 Column Content Center"
 msgstr "３カラム（メインセクション中央）"
 
+#: dist/lightning-three-column-unit/inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:35
 #: inc/lightning-three-column-unit/package/class-lightning-three-column-unit.php:35
 msgid "3 Column Content Right"
 msgstr "３カラム（メインセクション右）"
@@ -121,6 +160,14 @@ msgstr "DRILL LANCER"
 #. Author URI of the plugin/theme
 msgid "https://www.drill-lancer.com"
 msgstr "https://www.drill-lancer.com"
+
+#~ msgid "When Three Column Layout is Selected, Make Two Column Layout"
+#~ msgstr ""
+#~ "3カラムレイアウトを選択時かつ幅が足りないときに２カラムレイアウトを生成"
+#~ "する"
+
+#~ msgid "Top Description Control"
+#~ msgstr "上部"
 
 #~ msgid ""
 #~ "When three column layout is selected and the width is not enough, "
