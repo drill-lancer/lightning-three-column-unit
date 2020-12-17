@@ -263,20 +263,20 @@ class Lightning_Three_Column_Unit {
 
 		if ( 'display' === $options['narrow_window_description'] ) {
 			$dynamic_css .= '
-				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.headerTop {
-						display: block;
-					}
-					.headerTop .headerTop_description {
-						text-align: center;
-					}
-					.headerTop nav {
-						display: none;
-					}
-					.headerTop .headerTop_contactBtn {
-						display: none;
-					}
+			@media ( max-width: ' . $max_1col_width . 'px ) {
+				.headerTop {
+					display: block;
 				}
+				.headerTop .headerTop_description {
+					text-align: center;
+				}
+				.headerTop nav {
+					display: none;
+				}
+				.headerTop .headerTop_contactBtn {
+					display: none;
+				}
+			}
 			';
 		} else {
 			$dynamic_css .= '
@@ -284,6 +284,7 @@ class Lightning_Three_Column_Unit {
 				.headerTop {
 					display: none;
 				}
+			}
 			';
 		}
 
