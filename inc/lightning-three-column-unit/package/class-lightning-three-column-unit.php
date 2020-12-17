@@ -593,6 +593,7 @@ class Lightning_Three_Column_Unit {
 							.addSection {
 								width: 100%;
 								max-width: 100%;
+								margin-top: 2em;
 								order: 2;
 							}
 						}
@@ -646,6 +647,7 @@ class Lightning_Three_Column_Unit {
 								.addSection {
 									width: 100%;
 									max-width: 100%;
+									margin-top: 2em;
 									order: 2;
 								}
 							}
@@ -697,6 +699,7 @@ class Lightning_Three_Column_Unit {
 								.addSection {
 									width: 100%;
 									max-width: 100%;
+									margin-top: 2em;
 									order: 2;
 								}
 							}
@@ -749,6 +752,7 @@ class Lightning_Three_Column_Unit {
 							.addSection {
 								width: 100%;
 								max-width: 100%;
+								margin-top: 2em;
 								order: 2;
 							}
 						}
