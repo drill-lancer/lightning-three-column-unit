@@ -203,36 +203,42 @@ class Lightning_Three_Column_Unit {
 			float:none;
 			margin: 0;
 		}
+		';
 
-		@media (min-width: 1200px) {
-			.addSection-base-on {
-				padding: 2.4rem 2rem;
+		if ( function_exists( 'lightning_is_base_active' ) && false !== lightning_is_base_active() ) {
+			$dynamic_css .= '
+			@media (min-width: 1200px) {
+				.addSection-base-on {
+					padding: 2.4rem 2rem;
+				}
 			}
-		}
 
-		@media (min-width: 992px) {
-			.addSection-base-on {
-				padding: 2.4rem 1.7rem;
+			@media (min-width: 992px) {
+				.addSection-base-on {
+					padding: 2.4rem 1.7rem;
+				}
 			}
-		}
 
-		@media (min-width: 768px) {
-			.addSection-base-on {
-				padding: 2rem;
+			@media (min-width: 768px) {
+				.addSection-base-on {
+					padding: 2rem;
+				}
 			}
-		}
 
-		@media (min-width: 576px) {
-			.addSection-base-on {
-				padding: 1.7rem;
+			@media (min-width: 576px) {
+				.addSection-base-on {
+					padding: 1.7rem;
+				}
 			}
+
+			.addSection-base-on {
+				background-color: #fff;
+				padding: 1.4rem;
+			}
+			';
 		}
 
-		.addSection-base-on {
-			background-color: #fff;
-			padding: 1.4rem;
-		}
-
+		$dynamic_css .= '
 		@media  ( max-width: ' . $max_1col_width . 'px ) {
 			body.device-pc .vk-mobile-nav-menu-btn {
 				display: block;
@@ -261,31 +267,33 @@ class Lightning_Three_Column_Unit {
 		}
 		';
 
-		if ( 'display' === $options['narrow_window_description'] ) {
-			$dynamic_css .= '
-			@media ( max-width: ' . $max_1col_width . 'px ) {
-				.headerTop {
-					display: block;
+		if ( class_exists( 'Lightning_Header_Top' ) ) {
+			if ( 'display' === $options['narrow_window_description'] ) {
+				$dynamic_css .= '
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.headerTop {
+						display: block;
+					}
+					.headerTop .headerTop_description {
+						text-align: center;
+					}
+					.headerTop nav {
+						display: none;
+					}
+					.headerTop .headerTop_contactBtn {
+						display: none;
+					}
 				}
-				.headerTop .headerTop_description {
-					text-align: center;
+				';
+			} else {
+				$dynamic_css .= '
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.headerTop {
+						display: none;
+					}
 				}
-				.headerTop nav {
-					display: none;
-				}
-				.headerTop .headerTop_contactBtn {
-					display: none;
-				}
+				';
 			}
-			';
-		} else {
-			$dynamic_css .= '
-			@media ( max-width: ' . $max_1col_width . 'px ) {
-				.headerTop {
-					display: none;
-				}
-			}
-			';
 		}
 
 		if ( $one_column_layout ) {
