@@ -177,31 +177,42 @@ class Lightning_Three_Column_Unit {
 		);
 
 		$container_class = '';
+		$dynamic_css     = '';
 
 		if ( in_array( $current_skin, $special_condiston, true ) ) {
-			$container_class = '
+			$container_class .= '
 			.container,
 			.siteHeadContainer.container .navbar-header,
-			.gMenu_outer nav
+			.gMenu_outer nav,
+			.header_scrolled .gMenu_outer nav
 			';
 		} else {
-			$container_class = '.container';
+			$container_class .= '
+			.container,
+			.header_scrolled .gMenu_outer nav
+			';
 		}
 
-		$dynamic_css = '
+		$dynamic_css .=
+		$container_class . '{
+			padding-left: 0;
+			padding-right: 0;
+		}
 		.siteContent>.container>.row,
 		.siteContent.siteContent-base-on>.container>.row {
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			margin: 0 -15px;
+			margin-left: 0;
+			margin-right: 0;
 		}
 		.sideSection,
 		.mainSection,
 		.addSection {
 			flex-basis: auto;
 			float:none;
-			margin: 0;
+			margin-left: 0;
+			margin-right: 0;
 		}
 		';
 
@@ -238,6 +249,41 @@ class Lightning_Three_Column_Unit {
 			';
 		}
 
+		if ( class_exists( 'Lightning_Header_Top' ) ) {
+			$dynamic_css .= '
+			.siteHeader .headerTop .container {
+				padding-left: 0;
+				padding-right: 0;
+			}
+			';
+			if ( 'display' === $options['narrow_window_description'] ) {
+				$dynamic_css .= '
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.headerTop {
+						display: block;
+					}
+					.headerTop .headerTop_description {
+						text-align: center;
+					}
+					.headerTop nav {
+						display: none;
+					}
+					.headerTop .headerTop_contactBtn {
+						display: none;
+					}
+				}
+				';
+			} else {
+				$dynamic_css .= '
+				@media ( max-width: ' . $max_1col_width . 'px ) {
+					.headerTop {
+						display: none;
+					}
+				}
+				';
+			}
+		}
+
 		$dynamic_css .= '
 		@media  ( max-width: ' . $max_1col_width . 'px ) {
 			body.device-pc .vk-mobile-nav-menu-btn {
@@ -266,35 +312,6 @@ class Lightning_Three_Column_Unit {
 			}
 		}
 		';
-
-		if ( class_exists( 'Lightning_Header_Top' ) ) {
-			if ( 'display' === $options['narrow_window_description'] ) {
-				$dynamic_css .= '
-				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.headerTop {
-						display: block;
-					}
-					.headerTop .headerTop_description {
-						text-align: center;
-					}
-					.headerTop nav {
-						display: none;
-					}
-					.headerTop .headerTop_contactBtn {
-						display: none;
-					}
-				}
-				';
-			} else {
-				$dynamic_css .= '
-				@media ( max-width: ' . $max_1col_width . 'px ) {
-					.headerTop {
-						display: none;
-					}
-				}
-				';
-			}
-		}
 
 		if ( $one_column_layout ) {
 			// 1 Column Layout.
