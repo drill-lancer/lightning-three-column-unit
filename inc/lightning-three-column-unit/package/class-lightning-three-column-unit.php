@@ -950,7 +950,6 @@ class Lightning_Three_Column_Unit {
 				}
 			}
 		}
-		echo $dynamic_css;
 		$dynamic_css = str_replace( PHP_EOL, '', $dynamic_css );
 		// delete tab.
 		$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
