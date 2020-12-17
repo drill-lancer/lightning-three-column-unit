@@ -217,14 +217,12 @@ class Lightning_Three_Column_Unit {
 		}
 
 		@media (min-width: 768px) {
-			.mainSection-base-on,
 			.addSection-base-on {
 				padding: 2rem;
 			}
 		}
 
 		@media (min-width: 576px) {
-			.mainSection-base-on,
 			.addSection-base-on {
 				padding: 1.7rem;
 			}
@@ -952,6 +950,7 @@ class Lightning_Three_Column_Unit {
 				}
 			}
 		}
+		echo $dynamic_css;
 		$dynamic_css = str_replace( PHP_EOL, '', $dynamic_css );
 		// delete tab.
 		$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
