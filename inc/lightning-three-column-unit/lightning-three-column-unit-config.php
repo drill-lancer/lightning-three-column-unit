@@ -14,8 +14,8 @@ if ( 'lightning' === get_template() || 'lightning-pro' === get_template() ) {
 		require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-condition.php';
 	}
 
-	if ( ! class_exists( 'Lightning_Three_Column_Unit_Setting' ) ) {
-		require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-setting.php';
+	if ( ! class_exists( 'Lightning_Three_Column_Unit_Control' ) ) {
+		require plugin_dir_path( __FILE__ ) . 'package/class-lightning-three-column-unit-control.php';
 	}
 
 	if ( ! class_exists( 'Lightning_Three_Column_Unit_Widget_Area' ) ) {

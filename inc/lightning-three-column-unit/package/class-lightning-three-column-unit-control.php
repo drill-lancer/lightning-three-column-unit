@@ -8,7 +8,7 @@
 /**
  * Lightning Three Column Unit
  */
-class Lightning_Three_Column_Unit_Setting {
+class Lightning_Three_Column_Unit_Control {
 
 	/**
 	 * Constructor
@@ -131,4 +131,4 @@ class Lightning_Three_Column_Unit_Setting {
 
 }
 
-new Lightning_Three_Column_Unit_Setting();
+new Lightning_Three_Column_Unit_Control();
